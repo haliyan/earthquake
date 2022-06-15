@@ -1,0 +1,12 @@
+Package: earthquake
+Title: Functions to Clean, Map, & Plot NOAA Earthquake Data 
+Version: 0.0.0.9000
+Authors@R: 
+    person("Hannah","Liyanarachchi", "hliyanar@yahoo.com",
+           role=c("aut","cre"))
+Description: What the package does (one paragraph).
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

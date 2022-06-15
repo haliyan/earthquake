@@ -1,0 +1,76 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# earthquake
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of earthquake is to clean, map, and visualize raw NOAA earthquake data. 
+
+## Installation
+
+You can install the development version of earthquake like so: Enter \code{install_github("haliyan/earthquake")} into the console. 
+
+*Note: using the \code{install_github()} function requires that the \code{devtools} package be installed and loaded. \code{devtools} can be
+installed using \code{install_packages("devtools")} and loaded using 
+\code{library(devtools)}.* 
+
+Once the \code{earthquake} package is installed, load it using the code
+\code{library(earthquake)}. 
+
+## Data 
+The NOAA data were sourced from (LINK)
+If the data has been downloaded, use the following code to read it into 
+R: 
+
+```{r, eval=FALSE}
+eq_data<-readr::read_delim("noaa_earthquakes.tsv",delim="\t")
+```
+
+However, a version of the NOAA earthquake dataset is provided in this package for examples and testing purposes. 
+Note that this is NOT the most up-to-date version of the data set. 
+It is recommended that the user download the most recent version of the earthquake data as shown above. 
+
+```{r, echo=FALSE}
+eq_data<-system.file("extdata", "noaa_earthquakes.tsv", package="earthquake")
+eq_data<-readr::read_delim(eq_data, delim="\t", progress=FALSE)
+```
+
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(earthquake)
+## basic example code
+```
+
+What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+
+```{r cars}
+summary(cars)
+```
+
+You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+
+You can also embed plots, for example:
+
+```{r pressure, echo = FALSE}
+plot(pressure)
+```
+
+In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
