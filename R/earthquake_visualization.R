@@ -430,7 +430,6 @@ clipper_plus<-function(data){
     }
   }
   out$max_yn=max_yn
-  print(str(out))
   return(out)
 }
 
