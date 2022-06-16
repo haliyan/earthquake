@@ -13,6 +13,11 @@
 #' @return A column of information written in HTML format which will
 #'   appear as a popup on a map.
 #'
+#' @examples
+#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
+#'          data<-eq_raw_cleaner(data)
+#'          data<-dplyr::mutate(data, popup_text=eq_create_label(data)}
+#'
 #' @importFrom stringr str_replace_all
 #'
 #' @export
@@ -50,6 +55,11 @@ eq_create_label<-function(mapdata){
 #'
 #' @return NULL. Displays a map in the Viewer pane.
 #'
+#' @examples
+#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
+#'          data<-eq_raw_cleaner(data)
+#'          eq_map(data)}
+#'
 #' @importFrom dplyr filter
 #' @importFrom viridis magma
 #' @importFrom leaflet colorFactor
@@ -76,9 +86,5 @@ eq_map<-function(mapdata,
                               col=~pal(color),
                               popup=annot_col)
 }
-
-#Example
-# popdata<-dplyr::mutate(tail(clean,10), popup_text=eq_create_label(tail(clean,10)))
-# eq_map(popdata,color=popdata$Mag,annot_col=popdata$popup_text)
 
 

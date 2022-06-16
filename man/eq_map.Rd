@@ -22,3 +22,9 @@ NULL. Displays a map in the Viewer pane.
 \description{
 A function to map earthquake data
 }
+\examples{
+\dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
+         data<-eq_raw_cleaner(data)
+         eq_map(data)}
+
+}
