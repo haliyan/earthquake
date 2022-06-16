@@ -46,6 +46,14 @@ eq_create_label<-function(mapdata){
 
 #' A function to map earthquake data
 #'
+#' This function creates an interactive Leaflet map of earthquake data.
+#' The locations of points on the map show the earthquake epicenters.
+#' The sizes of points on the map show the earthquake magnitudes.
+#' The points can be colored by a user-specified variable, and a legend is
+#' included to explain the colors.
+#' The user can also specify a column of the earthquake data to be shown
+#' as a popup when each point is clicked.
+#'
 #' @param mapdata Data to be mapped
 #' @param color The column to be colored by, indicated using the $
 #'   operator. Defaults to no column, and every point is colored the
