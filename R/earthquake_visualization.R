@@ -420,16 +420,17 @@ clipper_plus<-function(data){
   if(length(out$n_max)==0){
     out<-auto_maxer(out)
   }
-  idx<-order(out$max_by)[1:out$n_max[1]]
+  max_vals<-sort(out$max_by, decreasing=TRUE,na.last=TRUE)[1:unique(out$n_max)]
   max_yn=rep(FALSE, nrow(out))
   for(i in 1:nrow(out)){
-    if(i %in% idx == TRUE){
+    if(out$max_by[i] %in% max_vals == TRUE){
       max_yn[i]<-TRUE
     } else {
       max_yn[i]<-FALSE
     }
   }
   out$max_yn=max_yn
+  print(str(out))
   return(out)
 }
 
