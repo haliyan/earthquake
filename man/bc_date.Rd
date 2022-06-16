@@ -25,3 +25,8 @@ defaults to the first (1st).
 The function calculates the BC date by subtracting the positive
 version of the inputted negative year from January 1st, 0000.
 }
+\examples{
+\dontrun{bc_date(y=-2000)}
+\dontrun{bc_date(y=-611, m=2)}
+
+}

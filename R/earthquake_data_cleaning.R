@@ -15,6 +15,10 @@
 #'
 #' @return A data.frame of clean NOAA data
 #'
+#' @examples
+#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
+#'          eq_raw_cleaner(data)}
+#'
 #' @importFrom dplyr select
 #' @importFrom dplyr filter
 #' @importFrom dplyr mutate
@@ -68,7 +72,7 @@ eq_location_clean<-function(data){
 }
 
 #example
-# clean<-eq_raw_cleaner(eq_data)
+ # clean<-eq_raw_cleaner(eq_data)
 
 #----------HELPER FUNCTIONS--------
 #' A function to paste together dates
@@ -79,6 +83,10 @@ eq_location_clean<-function(data){
 #' @param d A day number as a character string. Defaults to 1 (the 1st).
 #'
 #' @return A date of class Date in y-m-d format
+#'
+#' @examples
+#' \dontrun{date_paster(y=2022)}
+#' \dontrun{date_paster(y=2020, m=8)}
 #'
 #' @importFrom tidyr replace_na
 #' @importFrom lubridate ymd
@@ -105,8 +113,14 @@ date_paster<-function(y,m=1,d=1){
 #'
 #' @return A BC/BCE date of class Date in y-m-d format
 #'
+#' @examples
+#' \dontrun{bc_date(y=-2000)}
+#' \dontrun{bc_date(y=-611, m=2)}
+#'
 #' @importFrom lubridate ymd
-#' @importfrom lubridate years
+#' @importFrom lubridate years
+#'
+#' @export
 bc_date<-function(y,m=1,d=1){
   bc_year= lubridate::ymd("0000-01-01") - lubridate::years(-1*as.numeric(y))
   return(bc_year)
@@ -124,9 +138,15 @@ bc_date<-function(y,m=1,d=1){
 #'
 #' @inheritParams date_paster
 #'
+#' @return An AD/CE date of class Date in y-m-d format
+#'
+#' @examples
+#' \dontrun{year_pad(y=28)}
+#' \dontrun{year_pad(y=123, m=5,d=22)}
+#'
 #' @importFrom stringr str_pad
 #'
-#' @return An AD/CE date of class Date in y-m-d format
+#' @export
 year_pad<-function(y,m=1,d=1){
   y<- stringr::str_pad(string=as.character(y), width = 4, side = "left",
                        pad = "0")

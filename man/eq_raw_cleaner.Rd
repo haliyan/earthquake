@@ -22,3 +22,8 @@ for visualization purposes. It also cleans up the existing Location
 Name column and ensures that the Latitude and Longitude columns are
 numeric.
 }
+\examples{
+\dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
+         eq_raw_cleaner(data)}
+
+}

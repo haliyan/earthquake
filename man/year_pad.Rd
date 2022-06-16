@@ -26,3 +26,8 @@ The function turns a 2- or 3- digit year into a 4-digit year by
 padding the left side with zeros. It does not change years which are
 already 4 digits long.
 }
+\examples{
+\dontrun{year_pad(y=28)}
+\dontrun{year_pad(y=123, m=5,d=22)}
+
+}

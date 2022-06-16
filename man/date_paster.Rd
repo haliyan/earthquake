@@ -20,3 +20,8 @@ A date of class Date in y-m-d format
 \description{
 A function to paste together dates
 }
+\examples{
+\dontrun{date_paster(y=2022)}
+\dontrun{date_paster(y=2020, m=8)}
+
+}
