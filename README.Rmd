@@ -32,21 +32,24 @@ Once the \code{earthquake} package is installed, load it using the code
 \code{library(earthquake)}. 
 
 ## Data 
-The NOAA data were sourced from (LINK)
-If the data has been downloaded, use the following code to read it into 
-R: 
+The NOAA data were sourced from [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data) 
+Download the most recent version of the data by clicking the download button in the top left hand corner of the page. 
+Once the data has been downloaded, read it into R using \code{readr::read_delim()} as follows: 
 
 ```{r, eval=FALSE}
-eq_data<-readr::read_delim("noaa_earthquakes.tsv",delim="\t")
+data_name<-readr::read_delim("download_name.tsv",delim="\t")
 ```
 
-However, a version of the NOAA earthquake dataset is provided in this package for examples and testing purposes. 
-Note that this is NOT the most up-to-date version of the data set. 
-It is recommended that the user download the most recent version of the earthquake data as shown above. 
+Substitute "data_name" with the desired name for the data.frame in R (e.g. earthquake_data) and "download_name" with the name of the downloaded file. 
 
-```{r, echo=FALSE}
-eq_data<-system.file("extdata", "noaa_earthquakes.tsv", package="earthquake")
-eq_data<-readr::read_delim(eq_data, delim="\t", progress=FALSE)
+Note that a version of the NOAA earthquake dataset is provided in this package for examples and testing purposes. 
+**This is NOT the most up-to-date version of the data set and should NOT be used for analysis. It is recommended that the user download the most recent version of the earthquake data and load it into R as shown above.** 
+To access the version included in the package for examples or practice, use the following code: 
+
+```{r}
+filename<-system.file("extdata","noaa_earthquakes.tsv", package="earthquake")
+eq_data<-read.delim(filename, header=TRUE)
+#substitute eq_data with any desired name for the data 
 ```
 
 
