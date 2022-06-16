@@ -84,7 +84,8 @@ eq_map<-function(mapdata,
                               lng=~Longitude,
                               lat=~Latitude,
                               col=~pal(color),
-                              popup=annot_col)
+                              popup=annot_col) %>%
+    leaflet::addLegend(pal=pal, values=color)
 }
 
 
