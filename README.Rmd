@@ -120,3 +120,6 @@ eq_map(eq_popup_data,
        color= eq_popup_data$Mag, 
        annot_col=eq_popup_data$text)
 ```
+
+##License 
+GPL
