@@ -23,14 +23,15 @@ The goal of earthquake is to clean, map, and visualize raw NOAA earthquake data.
 
 ## Installation
 
-You can install the development version of earthquake like so: Enter `install_github("haliyan/earthquake")` into the console. 
+You can install the development version of earthquake like so: 
+Enter `install_github("haliyan/earthquake")` into the console. 
 
-*Note: using the \code{install_github()} function requires that the \code{devtools} package be installed and loaded. \code{devtools} can be
-installed using \code{install_packages("devtools")} and loaded using 
-\code{library(devtools)}.* 
+*Note: using the `install_github()` function requires that the `devtools` package be installed and loaded. `devtools` can be
+installed using `install_packages("devtools")` and loaded using 
+`library(devtools)`.* 
 
-Once the \code{earthquake} package is installed, load it using the code
-\code{library(earthquake)}. 
+Once the `earthquake` package is installed, load it using the code
+`library(earthquake)`. 
 
 ```{r,echo=FALSE}
 library(earthquake)
@@ -38,9 +39,10 @@ library(knitr)
 ```
 
 ## Data 
-The NOAA data were sourced from [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data) 
+The NOAA data were sourced from [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data).
+
 Download the most recent version of the data by clicking the download button in the top left hand corner of the page. 
-Once the data has been downloaded, read it into R using \code{readr::read_delim()} as follows: 
+Once the data has been downloaded, read it into R using `readr::read_delim()` as follows: 
 
 ```{r, eval=FALSE}
 data_name<-readr::read_delim("download_name.tsv",delim="\t")
@@ -71,7 +73,7 @@ eq_clean<-eq_raw_cleaner(as.data.frame(eq_data))
 ```
 
 Once cleaned, the data can be plotted as part of a ggplot object using the timeline geom.  
-The following code also demonstrates the \code{bc_date()} and \code{year_pad()} functions in action. 
+The following code also demonstrates the `bc_date()` and `year_pad()` functions in action. 
 
 ```{r}
 ggplot2::ggplot(data=eq_clean, 
@@ -114,9 +116,9 @@ ggplot2::ggplot(data=eq_clean,
   ggplot2::ggtitle("Early 2022 Earthquakes")
 ```
 
-Finally, the data can be mapped in Leaflet with the \code{eq_map()} function.
+Finally, the data can be mapped in Leaflet with the `eq_map` function.
 
-The \code{eq_create_label()} function can be used to create popup text (which contains information about earthquake location, magnitude, and number of deaths caused) for each point displayed on the map. 
+The `eq_create_label()` function can be used to create popup text (which contains information about earthquake location, magnitude, and number of deaths caused) for each point displayed on the map. 
 
 ```{r}
 eq_popup_data<-dplyr::mutate(tail(eq_clean,10), text=eq_create_label(tail(eq_clean,10)))
