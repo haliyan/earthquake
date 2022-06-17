@@ -1,0 +1,52 @@
+#' Earthquake Information (2150 BC - Present)
+#'
+#' A dataset containing information about all recorded earthquakes,
+#' starting in 2150 BC and ending on May 26, 2022.
+#'
+#' @format A data frame with 6312 rows and 39 columns
+#' \describe{
+#'   \item{Search Parameters}{An empty column to be removed in data
+#'   cleaning}
+#'   \item{Year}{The year in which the earthquake occurred}
+#'   \item{Mo}{The month in which the earthquake occurred}
+#'   \item{Dy}{The day on which the earthquake occurred}
+#'   \item{Hr}{The time at which the earthquake occurred (hour)}
+#'   \item{Mn}{The time at which the earthquake occurred (minute)}
+#'   \item{Sec}{The time at which the earthquake occurred (second)}
+#'   \item{Tsu}
+#'   \item{Vol}
+#'   \item{Location Name}{The name of the earthquake location}
+#'   \item{Latitude}{Latitude of earthquake}
+#'   \item{Longitude}{Longitude of earthquake}
+#'   \item{Focal Depth (km)}{Focal depth of earthquake in km}
+#'   \item{Mag}{Magnitude of the earthquake on Richter scale}
+#'   \item{MMI INt}
+#'   \item{Deaths}
+#'   \item{Death Description}
+#'   \item{Missing}
+#'   \item{Missing Description}
+#'   \item{Injuries}
+#'   \item{Injuries Description}
+#'   \item{Damage ($Mil)}{Damage caused by earthquake in millions of
+#'     dollars}
+#'   \item{Damage Description}
+#'   \item{Houses Destroyed}{Number of houses destroyed by earthquake}
+#'   \item{Houses Destroyed Description}
+#'   \item{Houses Damaged}{Number of houses damaged by earthquake}
+#'   \item{Houses Damaged Description}
+#'   \item{Total Deaths}{Total number of deaths due to earthquake}
+#'   \item{Total Death Description}
+#'   \item{Total Missing}{Total number of people missing}
+#'   \item{Total Missing Description}
+#'   \item{Total Injuries}{Total number of injuries due to earthquake}
+#'   \item{Total Injuries Description}
+#'   \item{Total Damage ($Mil)}
+#'   \item{Total Damage Description}
+#'   \item{Total Houses Destroyed}
+#'   \item{Total Houses Destroyed Description}
+#'   \item{Total Houses Damaged}
+#'   \item{Total Houses Damaged Description}
+#'   }
+#'
+#' @source \url{www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data}
+"eq_data"
