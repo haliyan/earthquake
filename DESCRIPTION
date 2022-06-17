@@ -2,7 +2,7 @@ Package: earthquake
 Title: Functions to Clean, Map, & Plot NOAA Earthquake Data 
 Version: 0.0.0.9000
 Authors@R: 
-    person("Hannah","Liyanarachchi", "hliyanar@yahoo.com",
+    person(given="Hannah",family="Liyanarachchi", email="hliyanar@yahoo.com",
            role=c("aut","cre"))
 Description: This package contains functions that clean raw NOAA earthquake data. This cleaned data can then be visualized in ggplot2 using both a normal and a labeled timeline geom, as well as plotted on an interactive Leaflet map. The user is free to set aesthetics for the geoms and set some of the arguments for the mapping function, which allows for customizable plots and maps. 
 License: GPL (>= 3) 
