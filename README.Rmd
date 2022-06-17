@@ -1,5 +1,6 @@
 ---
 output: github_document
+always_allow_html: true 
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -59,11 +60,14 @@ The object `eq_data` will now be saved into the environment and can be cleaned a
 
 ## Examples
 
-This is a basic example of cleaning data. 
+Data can be cleaned using the `eq_raw_cleaner` function. 
+```{r,eval=FALSE}
+eq_clean<-eq_raw_cleaner(eq_data)
+```
 
-```{r}
-eq_clean<-eq_raw_cleaner(eq_data) 
-head(eq_clean)
+
+```{r,echo=FALSE}
+eq_clean<-eq_raw_cleaner(as.data.frame(eq_data))
 ```
 
 Once cleaned, the data can be plotted as part of a ggplot object using the timeline geom.  
@@ -121,5 +125,6 @@ eq_map(eq_popup_data,
        annot_col=eq_popup_data$text)
 ```
 
-##License 
+## License 
+
 GPL
