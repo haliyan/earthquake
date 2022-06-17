@@ -1,5 +1,5 @@
 ---
-output: html_document
+output: github_document
 title: earthquake package README
 ---
 
@@ -119,13 +119,18 @@ ggplot2::ggplot(data=eq_clean,
 Finally, the data can be mapped in Leaflet with the `eq_map` function.
 
 The `eq_create_label()` function can be used to create popup text (which contains information about earthquake location, magnitude, and number of deaths caused) for each point displayed on the map. 
+The image included is a screenshot of the map generated from the code below:
 
-```{r}
+```{r,eval=FALSE}
 eq_popup_data<-dplyr::mutate(tail(eq_clean,10), text=eq_create_label(tail(eq_clean,10)))
 eq_map(eq_popup_data, 
        color= eq_popup_data$Mag, 
        annot_col=eq_popup_data$text)
 ```
+
+![Map Screenshot](man/figures/screenshot.png)
+
+When the code is run in R, a fully interactive Leaflet map (with popups) will be created. 
 
 ## License 
 
