@@ -22,7 +22,7 @@ The goal of earthquake is to clean, map, and visualize raw NOAA earthquake data.
 
 ## Installation
 
-You can install the development version of earthquake like so: Enter \code{install_github("haliyan/earthquake")} into the console. 
+You can install the development version of earthquake like so: Enter `install_github("haliyan/earthquake")` into the console. 
 
 *Note: using the \code{install_github()} function requires that the \code{devtools} package be installed and loaded. \code{devtools} can be
 installed using \code{install_packages("devtools")} and loaded using 
@@ -30,6 +30,11 @@ installed using \code{install_packages("devtools")} and loaded using
 
 Once the \code{earthquake} package is installed, load it using the code
 \code{library(earthquake)}. 
+
+```{r,echo=FALSE}
+library(earthquake)
+library(knitr)
+```
 
 ## Data 
 The NOAA data were sourced from [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data) 
@@ -47,19 +52,14 @@ Note that a version of the NOAA earthquake dataset is provided in this package f
 To access the version included in the package for examples or practice, use the following code: 
 
 ```{r}
-filename<-system.file("extdata","noaa_earthquakes.tsv", package="earthquake")
-eq_data<-suppressMessages(readr::read_tsv(filename,progress=FALSE))
-#substitute eq_data with any desired name for the data 
+data(eq_data)
 ```
 
+The object `eq_data` will now be saved into the environment and can be cleaned and visualized. 
 
 ## Examples
 
 This is a basic example of cleaning data. 
-```{r,echo=FALSE}
-library(earthquake)
-```
-
 
 ```{r}
 eq_clean<-eq_raw_cleaner(eq_data) 
