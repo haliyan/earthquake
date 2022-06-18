@@ -22,8 +22,8 @@ This function handles BC/BCE or "negative" dates.
 It takes as input a BC year, month, and day. If no month and day are
 inputted, the month defaults to the first month (January) and the day
 defaults to the first (1st).
-The function calculates the BC date by subtracting the positive
-version of the inputted negative year from January 1st, 0000.
+The function calculates the BC year by subtracting the positive
+version of the inputted negative year from the year 0000.
 }
 \examples{
 \dontrun{bc_date(y=-2000)}
