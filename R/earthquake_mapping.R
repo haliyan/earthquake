@@ -14,8 +14,7 @@
 #'   appear as a popup on a map.
 #'
 #' @examples
-#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
-#'          data<-eq_raw_cleaner(data)
+#' \dontrun{data<-eq_raw_cleaner(eq)
 #'          data<-dplyr::mutate(data, popup_text=eq_create_label(data)}
 #'
 #' @importFrom stringr str_replace_all
@@ -64,9 +63,7 @@ eq_create_label<-function(mapdata){
 #' @return NULL. Displays a map in the Viewer pane.
 #'
 #' @examples
-#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
-#'          data<-eq_raw_cleaner(data)
-#'          eq_map(data)}
+#' \dontrun{eq_map(eq_raw_cleaner(eq))}
 #'
 #' @importFrom dplyr filter
 #' @importFrom viridis magma

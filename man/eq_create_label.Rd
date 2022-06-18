@@ -22,8 +22,7 @@ If any of this information is missing for a certain observation, it
 will not be displayed in the popup.
 }
 \examples{
-\dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
-         data<-eq_raw_cleaner(data)
+\dontrun{data<-eq_raw_cleaner(eq)
          data<-dplyr::mutate(data, popup_text=eq_create_label(data)}
 
 }

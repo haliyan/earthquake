@@ -29,8 +29,6 @@ The user can also specify a column of the earthquake data to be shown
 as a popup when each point is clicked.
 }
 \examples{
-\dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
-         data<-eq_raw_cleaner(data)
-         eq_map(data)}
+\dontrun{eq_map(eq_raw_cleaner(eq))}
 
 }
