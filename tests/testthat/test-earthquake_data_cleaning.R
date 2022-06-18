@@ -20,15 +20,15 @@ test_that("bc_date returns a correctly formatted date", {
   expect_s3_class(bc_date(y=-1888), "Date")
 })
 
-test_that("date_sorter returns a correctly formatted vector of dates",{
-  expect_vector(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
-                size=2)
+test_that("date_sorter returns the correct object",{
   expect_s3_class(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
               "Date")
+  expect_length(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),2)
 })
 
 test_that("eq_raw_cleaner returns the correct object",{
-  expect_equal(dim(eq_raw_cleaner(eq)), c(6259, 37))
+  expect_s3_class(eq_raw_cleaner(eq), "data.frame")
+  expect_equal(dim(eq_raw_cleaner(eq)),c(6259,37))
 })
 
 test_that("eq_location_clean returns the correct type object",{
