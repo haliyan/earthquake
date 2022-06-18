@@ -1,14 +1,12 @@
-data(eq_data)
-
 test_that("geom_timeline returns the correct object",{
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"))) +
                     geom_timeline(size=5), "ggplot")
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"),
@@ -18,13 +16,13 @@ test_that("geom_timeline returns the correct object",{
 
 test_that("stat_timeline returns the correct object",{
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"))) +
                     stat_timeline(size=5), "ggplot")
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"),
@@ -34,7 +32,7 @@ test_that("stat_timeline returns the correct object",{
 
 test_that("geom_timeline_label returns the correct object",{
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"),
@@ -46,7 +44,7 @@ test_that("geom_timeline_label returns the correct object",{
 
 test_that("stat_timeline_label returns the correct object", {
   expect_s3_class(ggplot2::ggplot(data=
-                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                    eq_raw_cleaner(tail(eq,100)),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"),
@@ -57,15 +55,15 @@ test_that("stat_timeline_label returns the correct object", {
 })
 
 test_that("auto_maxer throws correct error",{
-  expect_error(auto_maxer(tail(eq_data,1)),
+  expect_error(auto_maxer(tail(eq,1)),
                "Please enter larger x range or specify n_max")
-  expect_s3_class(auto_maxer(tail(eq_data,2)), "data.frame")
+  expect_s3_class(auto_maxer(tail(eq,2)), "data.frame")
 })
 
 test_that("auto_maxer produces message correctly",{
-  expect_message(auto_maxer(tail(eq_data,2)),
+  expect_message(auto_maxer(tail(eq,2)),
                  "n_max has been automatically set to 1")
-  expect_message(auto_maxer(tail(eq_data,3)),
+  expect_message(auto_maxer(tail(eq,3)),
                  "n_max has been automatically set to 1")
 })
 

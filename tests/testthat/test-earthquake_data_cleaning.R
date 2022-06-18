@@ -1,5 +1,3 @@
-data(eq_data)
-
 test_that("date_paster returns a correctly formatted date",{
   expect_equal(nchar(as.character(date_paster(y="2022"))), 10)
   expect_warning(date_paster(y="eighteen hundred"),
@@ -31,5 +29,5 @@ test_that("date_sorter returns a correctly formatted vector of dates",{
 })
 
 test_that("eq_raw_cleaner returns the correct object",{
-  expect_equal(dim(eq_raw_cleaner(as.data.frame(eq_data))), c(6259, 37))
+  expect_equal(dim(eq_raw_cleaner(eq)), c(6259, 37))
 })
