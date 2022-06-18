@@ -121,7 +121,8 @@ date_paster<-function(y,m=1,d=1){
 #'
 #' @export
 bc_date<-function(y,m=1,d=1){
-  bc_year= lubridate::ymd("0000-01-01") - lubridate::years(-1*as.numeric(y))
+  zero_yr<-paste("0000",m,d,sep="-")
+  bc_year= lubridate::ymd(zero_yr) - lubridate::years(-1*as.numeric(y))
   return(bc_year)
 }
 
@@ -180,7 +181,9 @@ date_sorter<-function(yvec,mvec,dvec){
   datecol<-as.Date(datecol)
   for(i in 1:length(yvec)){
     if(yvec[i]<0){
-      datecol[i]<-bc_date(yvec[i])
+      datecol[i]<-bc_date(yvec[i],
+                          mvec[i],
+                          dvec[i])
     } else if (yvec[i]>=0) {
       if(nchar(as.character(yvec[i]))<4){
         datecol[i]<-year_pad(y=yvec[i],
