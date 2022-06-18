@@ -21,7 +21,8 @@ test_that("bc_date returns a correctly formatted date", {
 })
 
 test_that("date_sorter returns a correctly formatted vector of dates",{
-  expect_equal(length(date_sorter(c("2021","2022"),c("2","5"),c("11","12"))),2)
+  expect_vector(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
+                size=2)
   expect_s3_class(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
               "Date")
 })
