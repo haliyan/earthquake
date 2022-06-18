@@ -31,3 +31,19 @@ test_that("date_sorter returns a correctly formatted vector of dates",{
 test_that("eq_raw_cleaner returns the correct object",{
   expect_equal(dim(eq_raw_cleaner(eq)), c(6259, 37))
 })
+
+test_that("eq_location_clean returns the correct type object",{
+  expect_s3_class(eq_location_clean(eq_raw_cleaner(tail(eq,100))),
+                  "data.frame")
+  expect_s3_class(eq_location_clean(eq_raw_cleaner(tail(eq,100)))$`Location Name`,
+                  "factor")
+  expect_match(as.character(eq_location_clean(eq[300,])$`Location Name`),
+               "Ramala, Gaza, Nablus; Egypt")
+})
+
+test_that("country_finder returns the correct type object",{
+  expect_s3_class(country_finder(eq_raw_cleaner(eq[200:300,])),
+                  "data.frame")
+  expect_s3_class(country_finder(eq_raw_cleaner(eq[300:400,]))$Country,
+                  "factor")
+})
