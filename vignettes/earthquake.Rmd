@@ -24,19 +24,18 @@ Load the package and the data as follows:
 
 ```{r}
 library(earthquake)
-data(eq_data)
+data(eq)
 ```
 
 The `eq_raw_cleaner` function cleans raw data downloaded from the [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data). 
 A crucial part of this cleaning process is the handling of dates. Due to the fact that this data includes observations from as far back as 2150 BC, several functions are used to handle dates. 
 These functions, `bc_date`, `year_pad`, and `date_paster`, are made available to the user as particularly the first two can be useful for visualizations (see visualization examples below).
 
-An example of cleaning a small section of the `eq_data` example dataset:
+An example of cleaning a small section of the `eq` example dataset:
 
 ```{r}
-eq_data %>% 
+eq %>% 
   dplyr::slice(50:200) %>% 
-  as.data.frame(.) %>% 
   eq_raw_cleaner(.)->clean_slice
 ```
 
