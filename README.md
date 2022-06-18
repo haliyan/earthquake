@@ -6,6 +6,8 @@ earthquake package README
 # earthquake
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/haliyan/earthquake/workflows/R-CMD-check/badge.svg)](https://github.com/haliyan/earthquake/actions)
 <!-- badges: end -->
 
 The goal of earthquake is to clean, map, and visualize raw NOAA
@@ -37,8 +39,8 @@ downloaded, read it into R using `readr::read_delim()` as follows:
 data_name<-readr::read_delim("download_name.tsv",delim="\t")
 ```
 
-Substitute “data\_name” with the desired name for the data.frame in R
-(e.g. earthquake\_data) and “download\_name” with the name of the
+Substitute “data_name” with the desired name for the data.frame in R
+(e.g. earthquake_data) and “download_name” with the name of the
 downloaded file.
 
 Note that a version of the NOAA earthquake dataset is provided in this
