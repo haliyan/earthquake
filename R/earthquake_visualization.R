@@ -143,16 +143,6 @@ GeomTimeline<-ggplot2::ggproto("GeomTimeline", ggplot2::GeomPoint,
                                                y=0.3),
                                draw_key=ggplot2::draw_key_point)
 
-# example
-# tail(clean,10) %>%
-#   ggplot2::ggplot(ggplot2::aes(x=Date,xmin=as.Date("2022-02-25"),
-#              xmax=as.Date("2022-05-26"),
-#              col=`Total Deaths`,
-#              fill=`Total Deaths`,
-#              y=`Location Name`))+
-#   geom_timeline(size=5, alpha=0.8)
-
-
 #----------TIMELINE LABEL GEOM----------
 #' Create timeline label stat function
 #'
