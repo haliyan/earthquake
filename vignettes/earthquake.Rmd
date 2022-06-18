@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```{r setup,echo=FALSE}
 library(knitr)
 suppressMessages(library(magrittr))
+rmarkdown::find_pandoc()
 ```
 
 This package contains functions which clean NOAA earthquake data, map it on an interactive Leaflet map, and plot it in ggplot2 using custom geoms. 
