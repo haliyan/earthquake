@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 # earthquake
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/haliyan/earthquake/workflows/R-CMD-check/badge.svg)](https://github.com/haliyan/earthquake/actions)
 <!-- badges: end -->
 
 The goal of earthquake is to clean, map, and visualize raw NOAA earthquake data. 
