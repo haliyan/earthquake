@@ -311,12 +311,6 @@ GeomTimelineLabel=ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
                                                      "fill","alpha","size"),
                                    default_aes=ggplot2::aes(size=5, alpha=1,
                                                    colour=1, fill=1))
-#Example
-# clean %>%
-#   ggplot2::ggplot(ggplot2::aes(x=Date, xmin=as.Date("2022-03-27"),
-#              xmax=as.Date("2022-05-26"),txt=Country,
-#              max_by=Mag,fill=`Total Deaths`,color=`Total Deaths`,n_max=4,size=Mag)) +
-#   geom_timeline_label(alpha=0.9)
 
 #----------HELPER FUNCTIONS--------
 #' A data clipper function for \code{stat_timeline}
