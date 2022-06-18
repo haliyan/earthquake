@@ -2,8 +2,6 @@ test_that("date_paster returns a correctly formatted date",{
   expect_equal(nchar(as.character(date_paster(y="2022"))), 10)
   expect_warning(date_paster(y="eighteen hundred"),
                  "All formats failed to parse. No formats found.")
-  expect_match(as.character(date_paster(y="2022",m="February")),
-               "2022-02-01")
   expect_s3_class(date_paster(y="2022"), "Date")
 })
 
@@ -23,7 +21,7 @@ test_that("bc_date returns a correctly formatted date", {
 })
 
 test_that("date_sorter returns a correctly formatted vector of dates",{
-  expect_length(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),2)
+  expect_equal(length(date_sorter(c("2021","2022"),c("2","5"),c("11","12"))),2)
   expect_s3_class(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
               "Date")
 })
