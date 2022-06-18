@@ -6,7 +6,7 @@
 #' @format A data frame with 6312 rows and 39 columns
 #' \describe{
 #'   \item{Search Parameters}{An empty column to be removed in data
-#'   cleaning}
+#'     cleaning}
 #'   \item{Year}{The year in which the earthquake occurred}
 #'   \item{Mo}{The month in which the earthquake occurred}
 #'   \item{Dy}{The day on which the earthquake occurred}
@@ -49,4 +49,4 @@
 #'   }
 #'
 #' @source \url{www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data}
-"eq_data"
+"eq"
