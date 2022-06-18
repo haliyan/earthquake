@@ -21,8 +21,8 @@ test_that("bc_date returns a correctly formatted date", {
 })
 
 test_that("date_sorter returns the correct object",{
-  expect_s3_class(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
-              "Date")
+  expect_type(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),
+              "double")
   expect_length(date_sorter(c("2021","2022"),c("2","5"),c("11","12")),2)
 })
 
