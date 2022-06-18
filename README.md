@@ -50,10 +50,10 @@ version included in the package for examples or practice, use the
 following code:
 
 ``` r
-data(eq_data)
+data(eq)
 ```
 
-The object `eq_data` will now be saved into the environment and can be
+The object `eq` will now be saved into the environment and can be
 cleaned and visualized.
 
 ## Examples
@@ -61,7 +61,7 @@ cleaned and visualized.
 Data can be cleaned using the `eq_raw_cleaner` function.
 
 ``` r
-eq_clean<-eq_raw_cleaner(eq_data)
+eq_clean<-eq_raw_cleaner(eq)
 ```
 
 Once cleaned, the data can be plotted as part of a ggplot object using
@@ -80,7 +80,7 @@ ggplot2::ggplot(data=eq_clean,
   ggplot2::ggtitle("Earthquakes from 33BC to 11AD")
 ```
 
-<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-6-1.png" width="100%" />
 
 Another example of the timeline geom shows how the y-aesthetic can be
 used.
@@ -97,7 +97,7 @@ ggplot2::ggplot(data=eq_clean,
   ggplot2::ggtitle("Selection of 2022 Earthquakes by Magnitude")
 ```
 
-<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-7-1.png" width="100%" />
 
 The earthquake data can also be plotted with the timeline label geom.
 The following plot shows some earthquakes that occurred in early 2022
@@ -117,7 +117,7 @@ ggplot2::ggplot(data=eq_clean,
   ggplot2::ggtitle("Early 2022 Earthquakes")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-8-1.png" width="100%" />
 
 Finally, the data can be mapped in Leaflet with the `eq_map` function.
 

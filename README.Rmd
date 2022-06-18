@@ -55,21 +55,16 @@ Note that a version of the NOAA earthquake dataset is provided in this package f
 To access the version included in the package for examples or practice, use the following code: 
 
 ```{r}
-data(eq_data)
+data(eq)
 ```
 
-The object `eq_data` will now be saved into the environment and can be cleaned and visualized. 
+The object `eq` will now be saved into the environment and can be cleaned and visualized. 
 
 ## Examples
 
 Data can be cleaned using the `eq_raw_cleaner` function. 
-```{r,eval=FALSE}
-eq_clean<-eq_raw_cleaner(eq_data)
-```
-
-
-```{r,echo=FALSE}
-eq_clean<-eq_raw_cleaner(as.data.frame(eq_data))
+```{r}
+eq_clean<-eq_raw_cleaner(eq)
 ```
 
 Once cleaned, the data can be plotted as part of a ggplot object using the timeline geom.  
