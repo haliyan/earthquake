@@ -15,6 +15,7 @@
 #' @param show.legend Defaults to TRUE
 #' @param inherit.aes Defaults to TRUE
 #' @param na.rm Defaults to FALSE
+#' @param ... Arguments to be passed to methods
 #'
 #' @return a layer which renders the data to make it suitable for the
 #'   timeline geom to plot
@@ -70,6 +71,7 @@ stat_timeline<-function(mapping=NULL,data=NULL,geom="timeline",
 #' @param na.rm Defaults to FALSE
 #' @param show.legend Defaults to TRUE
 #' @param inherit.aes Defaults to TRUE
+#' @param ... Arguments to be passed to methods
 #'
 #' @return a layer which plots the data as per the GeomTimeline
 #'   object definition that can be added to a ggplot object
@@ -168,6 +170,7 @@ GeomTimeline<-ggplot2::ggproto("GeomTimeline", ggplot2::GeomPoint,
 #' @param show.legend Defaults to TRUE
 #' @param inherit.aes Defaults to TRUE
 #' @param na.rm Defaults to TRUE
+#' @param ... Arguments to be passed to methods
 #'
 #' @return a layer which renders the data to make it suitable for the
 #'   timeline label geom to plot
@@ -233,6 +236,7 @@ stat_timeline_label<-function(mapping=NULL,data=NULL,geom="timelineLabel",
 #' @param na.rm Defaults to TRUE
 #' @param show.legend Defaults to TRUE
 #' @param inherit.aes Defaults to TRUE
+#' @param ... Arguments to be passed to methods
 #'
 #' @return a layer which plots the data as per the GeomTimelineLabel
 #'   object definition that can be added to a ggplot object

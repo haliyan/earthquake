@@ -32,6 +32,8 @@ timeline stat}
 \item{show.legend}{Defaults to TRUE}
 
 \item{inherit.aes}{Defaults to TRUE}
+
+\item{...}{Arguments to be passed to methods}
 }
 \value{
 a layer which plots the data as per the GeomTimeline

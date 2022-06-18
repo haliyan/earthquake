@@ -30,6 +30,8 @@ data as specified in the \code{ggplot2::ggplot()} call}
 \item{inherit.aes}{Defaults to TRUE}
 
 \item{na.rm}{Defaults to TRUE}
+
+\item{...}{Arguments to be passed to methods}
 }
 \value{
 a layer which renders the data to make it suitable for the
