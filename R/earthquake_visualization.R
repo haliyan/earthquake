@@ -27,6 +27,14 @@
 #'   \item{xmax}{REQUIRED. Maxmimum/ending date. Must be a Date object}
 #'   }
 #'
+#' @examples
+#'   \dontrun{ggplot2::ggplot(data=
+#'                                 eq_raw_cleaner(tail(eq,100)),
+#'                            ggplot2::aes(x=Date,
+#'                                         xmin=as.Date("2022-01-14"),
+#'                                         xmax=as.Date("2022-05-26"))) +
+#'                                         stat_timeline(size=5)}
+#'
 #' @importFrom ggplot2 layer
 #'
 #' @export
@@ -81,6 +89,13 @@ stat_timeline<-function(mapping=NULL,data=NULL,geom="timeline",
 #'   }
 #' @importFrom ggplot2 layer
 #'
+#' @examples
+#'   \dontrun{ggplot2::ggplot(data=
+#'                                 eq_raw_cleaner(tail(eq,100)),
+#'                            ggplot2::aes(x=Date,
+#'                                         xmin=as.Date("2022-01-14"),
+#'                                         xmax=as.Date("2022-05-26"))) +
+#'                                         geom_timeline(size=5)}
 #' @export
 geom_timeline<-function(mapping=NULL,data=NULL, stat="timeline",
                         position="identity", na.rm=FALSE,
@@ -171,6 +186,17 @@ GeomTimeline<-ggplot2::ggproto("GeomTimeline", ggplot2::GeomPoint,
 #'     max_by column (arranged in descending order) }
 #'   }
 #'
+#' @examples
+#'   \dontrun{ggplot2::ggplot(data=
+#'                                 eq_raw_cleaner(tail(eq,100)),
+#'                            ggplot2::aes(x=Date,
+#'                                         xmin=as.Date("2022-01-14"),
+#'                                         xmax=as.Date("2022-05-26"),
+#'                                         max_by=Mag,
+#'                                         txt=Country,
+#'                                         n_max=3)) +
+#'                            stat_timeline_label()}
+#'
 #' @importFrom ggplot2 layer
 #'
 #' @export
@@ -229,6 +255,17 @@ stat_timeline_label<-function(mapping=NULL,data=NULL,geom="timelineLabel",
 #'   \item{size}{optional, defaults to 5pt. Column to size points by}
 #'   \item{alpha}{optional, defaults to 1 (no transparency)}
 #'   }
+#'
+#' @examples
+#'   \dontrun{ggplot2::ggplot(data=
+#'                                 eq_raw_cleaner(tail(eq,100)),
+#'                            ggplot2::aes(x=Date,
+#'                                         xmin=as.Date("2022-01-14"),
+#'                                         xmax=as.Date("2022-05-26"),
+#'                                         max_by=Mag,
+#'                                         txt=Country,
+#'                                         n_max=3)) +
+#'                            geom_timeline_label()}
 #'
 #' @importFrom ggplot2 layer
 #'
@@ -295,6 +332,12 @@ GeomTimelineLabel=ggplot2::ggproto("GeomTimelineLabel", ggplot2::Geom,
 #'
 #' @return A data.frame filtered to contain only the observations lying
 #'   within the \code{xmin} and \code{xmax} bounds specified.
+#'
+#' @examples
+#'   \dontrun{clipper(data.frame(x=c(4,7,12),
+#'                               xmin=c(6,6,6),
+#'                               xmax=c(15,15,15)))}
+#'
 clipper<-function(data){
   idx<-which(data$x>=data$xmin & data$x<=data$xmax)
   data<-data[idx,]
@@ -321,6 +364,16 @@ clipper<-function(data){
 #'   \code{geom_timeline} and transformed for plotting.
 #'
 #' @return a gTree object containing the grobs to be drawn
+#'
+#' @examples
+#'   \dontrun{timeline_draw(data.frame(x=c(7,12),
+#'                                     xmin=c(6,6),
+#'                                     xmax=c(15,15),
+#'                                     y=c(3,6),
+#'                                     size=c(5,5),
+#'                                     colour=c(1,1),
+#'                                     fill=c(1,1),
+#'                                     alpha=c(1,1))}
 #'
 #' @importFrom grid linesGrob
 #' @importFrom grid pointsGrob
@@ -387,6 +440,10 @@ timeline_draw<-function(coords){
 #'
 #' @return A data.frame of data with a new n_max column
 #'
+#' @examples
+#'   \dontrun{auto_maxer(tail(eq,20))}
+#'   \dontrun{auto_maxer(tail(eq,19))}
+#'
 #' @importFrom dplyr mutate
 auto_maxer<-function(data){
   data<-dplyr::mutate(data, n_max=rep(floor(0.5*nrow(data)),
@@ -415,6 +472,14 @@ auto_maxer<-function(data){
 #' @return A data.frame filtered to contain only the observations lying
 #'   within the \code{xmin} and \code{xmax} bounds specified AND
 #'   filtered to contain only n_max earthquakes to plot.
+#'
+#' @examples
+#'   \dontrun{clipper_plus(data.frame(x=c(4,7,12),
+#'                                    xmin=c(6,6,6),
+#'                                    xmax=c(15,15,15),
+#'                                    txt=c("red","yellow","blue"),
+#'                                    max_by=c(1,2,3)))}
+#'
 clipper_plus<-function(data){
   out<-clipper(data)
   if(length(out$n_max)==0){
@@ -459,6 +524,19 @@ clipper_plus<-function(data){
 #'   \code{geom_timeline} and transformed for plotting.
 #'
 #' @return a gTree object containing the grobs to be drawn
+#'
+#' @examples
+#'   \dontrun{timeline_label_draw(data.frame(x=c(7,12),
+#'                                 xmin=c(6,6),
+#'                                 xmax=c(15,15),
+#'                                 max_by=c(1,2),
+#'                                 n_max=c(1,1),
+#'                                 max_yn=c(FALSE,TRUE),
+#'                                 txt=c("a","b"),
+#'                                 size=c(5,5),
+#'                                 colour=c(1,1),
+#'                                 fill=c(1,1),
+#'                                 alpha=c(1,1)))}
 #'
 #' @importFrom grid unit
 #' @importFrom grid textGrob
