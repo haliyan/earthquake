@@ -92,8 +92,8 @@ eq_location_clean<-function(data){
 #'
 #' @export
 date_paster<-function(y,m=1,d=1){
-  m<-tidyr::replace_na(m,1)
-  d<-tidyr::replace_na(d,1)
+  m<-tidyr::replace_na(as.numeric(m),1)
+  d<-tidyr::replace_na(as.numeric(d),1)
   date<-paste(y,m,d,sep="-")
   date<-lubridate::ymd(date)
   return(date)
@@ -121,8 +121,8 @@ date_paster<-function(y,m=1,d=1){
 #'
 #' @export
 bc_date<-function(y,m=1,d=1){
-  m<-tidyr::replace_na(m,1)
-  d<-tidyr::replace_na(d,1)
+  m<-tidyr::replace_na(as.numeric(m),1)
+  d<-tidyr::replace_na(as.numeric(d),1)
   zero_yr<-paste("0000",m,d,sep="-")
   bc_year= lubridate::ymd(zero_yr) - lubridate::years(-1*as.numeric(y))
   return(bc_year)
