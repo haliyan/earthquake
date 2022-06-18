@@ -29,11 +29,15 @@ Once the `earthquake` package is installed, load it using the code
 ## Data
 
 The NOAA data were sourced from [this web
-page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data).
+page](https://data.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/Hazards/iso/xml/G012153.xml&view=getDataView).
 
-Download the most recent version of the data by clicking the download
-button in the top left hand corner of the page. Once the data has been
-downloaded, read it into R using `readr::read_delim()` as follows:
+Download the most recent version of the data by selecting “NCEI/WDS
+Global Significant Earthquake Database”, then scrolling down and
+clicking “Search”. Then click the download button in the top left hand
+corner of the page.
+
+Once the data has been downloaded, read it into R using
+`readr::read_delim()` as follows:
 
 ``` r
 data_name<-readr::read_delim("download_name.tsv",delim="\t")
