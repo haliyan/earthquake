@@ -14,6 +14,83 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(earthquake)
+```{r setup,echo=FALSE}
+library(knitr)
+suppressMessages(library(magrittr))
 ```
+
+This package contains functions which clean NOAA earthquake data, map it on an interactive Leaflet map, and plot it in ggplot2 using custom geoms. 
+Load the package and the data as follows: 
+
+```{r}
+library(earthquake)
+data(eq_data)
+```
+
+The `eq_raw_cleaner` function cleans raw data downloaded from the [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data). 
+A crucial part of this cleaning process is the handling of dates. Due to the fact that this data includes observations from as far back as 2150 BC, several functions are used to handle dates. 
+These functions, `bc_date`, `year_pad`, and `date_paster`, are made available to the user as particularly the first two can be useful for visualizations (see visualization examples below).
+
+An example of cleaning a small section of the `eq_data` example dataset:
+
+```{r}
+eq_data %>% 
+  dplyr::slice(50:200) %>% 
+  as.data.frame(.) %>% 
+  eq_raw_cleaner(.)->clean_slice
+```
+
+After data is cleaned, it can be plotted in ggplot2 using one of the custom geoms, `geom_timeline` or `geom_timeline_label`. 
+The following code will plot a timeline of earthquakes between 15 BC and 29 AD, colored and filled by their latitude. 
+This code also demonstrates the use of the `bc_date` and `year_pad` functions. 
+
+
+```{r}
+ggplot2::ggplot(data=clean_slice, 
+                ggplot2::aes(x=Date,
+                             xmin=bc_date(y="-015"),
+                             xmax=year_pad(y="29"),
+                             colour=Latitude,
+                             fill=Latitude)) +
+  geom_timeline(size=5) +
+  ggplot2::ggtitle("Earthquakes from 15BC to 29AD")
+```
+
+The following code creates another timeline in ggplot2, this time with the optional y-aesthetic specified plus the default color & fill. 
+
+```{r}
+ggplot2::ggplot(data=tail(clean_slice), 
+                ggplot2::aes(x=Date,
+                             xmin=year_pad(744,6,30),
+                             xmax=year_pad(749,1,25),
+                             y=Country))+
+  geom_timeline(size=5) +
+  ggplot2::ggtitle("755/6/30-749/1/25 Earthquakes by Country")
+```
+
+This code creates a labeled timeline in ggplot2 using `geom_timeline_label` for all the recorded earthquakes between the year 120 AD and 155 AD. The countries where the 3 largest earthquakes by magnitude occurred are labeled. The points are also colored and filled by latitude, demonstrating that two of the largest earthquakes occurred close together in time at similar latitudes but different countries (China and Turkey), whereas the largest earthquake of this time period also occurred in Turkey but at a different latitude. 
+
+```{r}
+ggplot2::ggplot(data=clean_slice, 
+                ggplot2::aes(x=Date,
+                             xmin=year_pad(120),
+                             xmax=year_pad(155),
+                             txt=Country,
+                             max_by=Mag, 
+                             size=Mag,
+                             color=Latitude,
+                             fill=Latitude,
+                             n_max=3))+
+  geom_timeline_label() +
+  ggplot2::ggtitle("120AD-155AD Earthquakes")
+```
+
+Finally, the following code creates a Leaflet map of all the earthquakes that occurred in China at this time, colored by date. The `eq_create_label` function is used to create a column which, when supplied to annot_col, appears as a popup containing location name, magnitude, and total death information. 
+
+```{r}
+clean_slice %>% 
+  dplyr::mutate(., pop_text<-eq_create_label(.)) %>% 
+  dplyr::filter(., Country=="China") %>% 
+  eq_map(., color=.$Date, annot_col=.$pop_text)
+```
+
