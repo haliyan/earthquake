@@ -31,5 +31,5 @@ test_that("date_sorter returns a correctly formatted vector of dates",{
 })
 
 test_that("eq_raw_cleaner returns the correct object",{
-  expect_equal(dim(eq_raw_cleaner(eq_data)), c(6259, 37))
+  expect_equal(dim(eq_raw_cleaner(as.data.frame(eq_data))), c(6259, 37))
 })
