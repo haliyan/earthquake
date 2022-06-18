@@ -23,3 +23,8 @@ A message will be displayed indicating what value n_max was set to.
 An error is thrown if n_max is calculated to be less than 1 as this
 will be impossible to plot.
 }
+\examples{
+  \dontrun{auto_maxer(tail(eq,20))}
+  \dontrun{auto_maxer(tail(eq,19))}
+
+}

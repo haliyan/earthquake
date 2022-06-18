@@ -28,3 +28,14 @@ provided in the \code{geom_timeline} code.
 The function then creates a gTree out of these grobs which it returns
 to be plotted.
 }
+\examples{
+  \dontrun{timeline_draw(data.frame(x=c(7,12),
+                                    xmin=c(6,6),
+                                    xmax=c(15,15),
+                                    y=c(3,6),
+                                    size=c(5,5),
+                                    colour=c(1,1),
+                                    fill=c(1,1),
+                                    alpha=c(1,1))}
+
+}

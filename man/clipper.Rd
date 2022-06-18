@@ -21,3 +21,9 @@ minimum date are filtered out, as are all observations that occur
 after the specified xmax or maximum date. The "clipped" data frame is
 then returned and used by the timeline geom for plotting.
 }
+\examples{
+  \dontrun{clipper(data.frame(x=c(4,7,12),
+                              xmin=c(6,6,6),
+                              xmax=c(15,15,15)))}
+
+}

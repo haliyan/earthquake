@@ -24,3 +24,11 @@ The data is then filtered so that the n_max largest observations will
 be flagged with the logical value TRUE. This indicates to the geom
 that these observations should be plotted with a label.
 }
+\examples{
+  \dontrun{clipper_plus(data.frame(x=c(4,7,12),
+                                   xmin=c(6,6,6),
+                                   xmax=c(15,15,15),
+                                   txt=c("red","yellow","blue"),
+                                   max_by=c(1,2,3)))}
+
+}

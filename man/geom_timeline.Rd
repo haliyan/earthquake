@@ -60,3 +60,11 @@ by}
 }
 }
 
+\examples{
+  \dontrun{ggplot2::ggplot(data=
+                                eq_raw_cleaner(tail(eq,100)),
+                           ggplot2::aes(x=Date,
+                                        xmin=as.Date("2022-01-14"),
+                                        xmax=as.Date("2022-05-26"))) +
+                                        geom_timeline(size=5)}
+}
