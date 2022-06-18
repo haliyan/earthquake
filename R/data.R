@@ -19,7 +19,7 @@
 #'   \item{Longitude}{Longitude of earthquake}
 #'   \item{Focal Depth (km)}{Focal depth of earthquake in km}
 #'   \item{Mag}{Magnitude of the earthquake on Richter scale}
-#'   \item{MMI INt}{}
+#'   \item{MMI Int}{Maximum MMI Intensity of earthquake}
 #'   \item{Deaths}{Number of deaths due to earthquake}
 #'   \item{Death Description}{The scale of deaths caused (0-4). 0=None, 1=Few(~1-50), 2=Some(~51-100),3=Many(~101-1000),4=Very Many(~1001+)}
 #'   \item{Missing}{Number of missing persons due to earthquake}
