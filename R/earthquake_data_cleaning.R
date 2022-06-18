@@ -16,8 +16,7 @@
 #' @return A data.frame of clean NOAA data
 #'
 #' @examples
-#' \dontrun{data<-read.delim(system.file("extdata","noaa_earthquakes.tsv", package="earthquake")),header=TRUE
-#'          eq_raw_cleaner(data)}
+#'   \dontrun{eq_raw_cleaner(eq)}
 #'
 #' @importFrom dplyr select
 #' @importFrom dplyr filter
@@ -52,6 +51,9 @@ eq_raw_cleaner <- function (data) {
 #'
 #' @return A tibble with the original Location Name column replaced by
 #'   a cleaned Location Name column
+#'
+#' @examples
+#'   \dontrun{eq_location_clean(eq_raw_cleaner(tail(eq,100)))}
 #'
 #' @importFrom stringr str_to_title
 #'
@@ -171,6 +173,11 @@ year_pad<-function(y,m=1,d=1){
 #' @return A column of type Date containing dates in the format y-m-d.
 #'   All dates in this column are correctly formatted.
 #'
+#' @examples
+#'   \dontrun{date_sorter(yvec=c("-200","9","1982"),
+#'                        mvec=c("2","7","11"),
+#'                        dvec=c("5","10","22")}
+#'
 date_sorter<-function(yvec,mvec,dvec){
   datecol<-rep("0000-01-01", length(yvec))
   datecol<-as.Date(datecol)
@@ -206,6 +213,10 @@ date_sorter<-function(yvec,mvec,dvec){
 #'   within the \code{eq_raw_cleaner} function.
 #' @return A tibble with a Country column
 #'
+#' @examples
+#'   \dontrun{country_finder(tail(eq,50))}
+#'   \dontrun{country_finder(data.frame(Latitude = 23, Longitude=33))}
+#'
 #' @importFrom rnaturalearth ne_countries
 #' @importFrom dplyr select
 #' @importFrom sp coordinates
@@ -213,6 +224,7 @@ date_sorter<-function(yvec,mvec,dvec){
 #' @importFrom sp CRS
 #' @importFrom sp over
 #' @importFrom dplyr mutate
+#'
 country_finder<-function(data){
   world<-rnaturalearth::ne_countries()
   latlon<-dplyr::select(data, Latitude, Longitude)
