@@ -26,3 +26,9 @@ It first checks for BC dates and handles those with the function
 \code{year_pad()} function to handle 2- and 3- digit years, then uses
 the \code{date_paster()} function on 4-digit years.
 }
+\examples{
+  \dontrun{date_sorter(yvec=c("-200","9","1982"),
+                       mvec=c("2","7","11"),
+                       dvec=c("5","10","22")}
+
+}

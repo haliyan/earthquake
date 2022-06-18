@@ -21,3 +21,7 @@ It keeps the location name that follows the colon :.
 It also converts the column type from character to factor to
 facilitate data visualization later on.
 }
+\examples{
+  \dontrun{eq_location_clean(eq_raw_cleaner(tail(eq,100)))}
+
+}

@@ -22,3 +22,8 @@ around that problem by creating a Country column by classifying each
 entry (by latitude and longitude) as a country as defined in the
 package \code{rnaturalearth}, wherever possible.
 }
+\examples{
+  \dontrun{country_finder(tail(eq,50))}
+  \dontrun{country_finder(data.frame(Latitude = 23, Longitude=33))}
+
+}
