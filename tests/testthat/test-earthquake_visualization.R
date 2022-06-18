@@ -6,14 +6,30 @@ test_that("geom_timeline returns the correct object",{
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"))) +
-                    geom_timeline(), "ggplot")
+                    geom_timeline(size=5), "ggplot")
   expect_s3_class(ggplot2::ggplot(data=
                                     eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
                                   ggplot2::aes(x=Date,
                                                xmin=as.Date("2022-01-14"),
                                                xmax=as.Date("2022-05-26"),
                                                y=Country)) +
-                    geom_timeline(), "ggplot")
+                    geom_timeline(size=5), "ggplot")
+})
+
+test_that("stat_timeline returns the correct object",{
+  expect_s3_class(ggplot2::ggplot(data=
+                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                  ggplot2::aes(x=Date,
+                                               xmin=as.Date("2022-01-14"),
+                                               xmax=as.Date("2022-05-26"))) +
+                    stat_timeline(size=5), "ggplot")
+  expect_s3_class(ggplot2::ggplot(data=
+                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                  ggplot2::aes(x=Date,
+                                               xmin=as.Date("2022-01-14"),
+                                               xmax=as.Date("2022-05-26"),
+                                               y=Country)) +
+                    stat_timeline(size=5), "ggplot")
 })
 
 test_that("geom_timeline_label returns the correct object",{
@@ -26,6 +42,18 @@ test_that("geom_timeline_label returns the correct object",{
                                                txt=Country,
                                                n_max=3)) +
                     geom_timeline_label(), "ggplot")
+})
+
+test_that("stat_timeline_label returns the correct object", {
+  expect_s3_class(ggplot2::ggplot(data=
+                                    eq_raw_cleaner(as.data.frame(tail(eq_data,100))),
+                                  ggplot2::aes(x=Date,
+                                               xmin=as.Date("2022-01-14"),
+                                               xmax=as.Date("2022-05-26"),
+                                               max_by=Mag,
+                                               txt=Country,
+                                               n_max=3)) +
+                    stat_timeline_label(), "ggplot")
 })
 
 test_that("auto_maxer throws correct error",{
@@ -68,3 +96,27 @@ test_that("clipper plus prepares data frame correctly",{
                                       max_by=c(1,2,3)))$max_yn[2])
 })
 
+test_that("timeline_draw produces an object of the correct class",{
+  expect_s3_class(timeline_draw(data.frame(x=c(7,12),
+                                           xmin=c(6,6),
+                                           xmax=c(15,15),
+                                           y=c(3,6),
+                                           size=c(5,5),
+                                           colour=c(1,1),
+                                           fill=c(1,1),
+                                           alpha=c(1,1))),"gTree")
+})
+
+test_that("timeline_label_draw produces an object of the correct class",{
+  expect_s3_class(timeline_label_draw(data.frame(x=c(7,12),
+                                           xmin=c(6,6),
+                                           xmax=c(15,15),
+                                           max_by=c(1,2),
+                                           n_max=c(1,1),
+                                           max_yn=c(FALSE,TRUE),
+                                           txt=c("a","b"),
+                                           size=c(5,5),
+                                           colour=c(1,1),
+                                           fill=c(1,1),
+                                           alpha=c(1,1))),"gTree")
+})
