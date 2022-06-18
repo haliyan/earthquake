@@ -73,9 +73,6 @@ eq_location_clean<-function(data){
   return(data)
 }
 
-#example
- # clean<-eq_raw_cleaner(eq_data)
-
 #----------HELPER FUNCTIONS--------
 #' A function to paste together dates
 #'
