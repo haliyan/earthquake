@@ -227,6 +227,7 @@ date_sorter<-function(yvec,mvec,dvec){
 #' @importFrom sp over
 #' @importFrom dplyr mutate
 #'
+#' @export
 country_finder<-function(data){
   world<-rnaturalearth::ne_countries()
   latlon<-dplyr::select(data, Latitude, Longitude)
