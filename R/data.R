@@ -46,5 +46,5 @@
 #'   \item{Total Houses Damaged Description}{The scale of total houses damaged (0-4). 0=None, 1=Few(~1-50), 2=Some(~51-100),3=Many(~101-1000),4=Very Many(~1001+)}
 #'   }
 #'
-#' @source \url{www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data}
+#' @source \url{https://data.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/Hazards/iso/xml/G012153.xml&view=getDataView}
 "eq"

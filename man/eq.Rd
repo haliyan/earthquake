@@ -49,7 +49,7 @@ A data frame with 6312 rows and 39 columns
 }
 }
 \source{
-\url{www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data}
+\url{https://data.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/Hazards/iso/xml/G012153.xml&view=getDataView}
 }
 \usage{
 eq
