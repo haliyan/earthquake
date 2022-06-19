@@ -20,18 +20,16 @@ suppressMessages(library(magrittr))
 ```
 
 This package contains functions which clean NOAA earthquake data, map it on an interactive Leaflet map, and plot it in ggplot2 using custom geoms. 
-Load the package and the data as follows: 
+
+Load the package as follows: 
 
 ```{r}
 library(earthquake)
-data(eq)
 ```
 
-The `eq_raw_cleaner` function cleans raw data downloaded from the [this web page](www.ngdc.noaa.gov/hazel/view/hazards/earthquake/event-data). 
-A crucial part of this cleaning process is the handling of dates. Due to the fact that this data includes observations from as far back as 2150 BC, several functions are used to handle dates. 
-These functions, `bc_date`, `year_pad`, and `date_paster`, are made available to the user as particularly the first two can be useful for visualizations (see visualization examples below).
+The `eq_raw_cleaner` function cleans raw data downloaded from the [this web page](https://data.noaa.gov/metaview/page?xml=NOAA/NESDIS/NGDC/MGG/Hazards/iso/xml/G012153.xml&view=getDataView). 
 
-An example of cleaning a small section of the `eq` example dataset:
+An example of cleaning a small section of the `eq` example dataset (which is included when the package is installed and loaded):
 
 ```{r}
 eq %>% 
@@ -39,7 +37,69 @@ eq %>%
   eq_raw_cleaner(.)->clean_slice
 ```
 
+A crucial part of this cleaning process is the handling of dates. Due to the fact that this data includes observations from as far back as 2150 BC, several functions are used to handle dates. 
+These functions, `bc_date`, `year_pad`, and `date_paster`, are made available to the user as particularly the first two can be useful for visualizations (see visualization examples below).
+
+The `bc_date` function is the only function of the three that should be used on BC/BCE or "negative" dates. `year_pad` will throw errors if supplied with a negative date, and `date_paster` will turn the BC date into an AD date. 
+Example of `bc_date` function: 
+
+```{r}
+bc_date(y=-2000, m=6, d=8)
+bc_date(y=-600)
+```
+
+Example of `year_pad` function:
+
+```{r}
+year_pad(y=3)
+```
+
+Example of `date_paster` function: 
+
+```{r}
+date_paster(y=2020, m=8, d=28)
+```
+
+In addition to the date functions, the `eq_raw_cleaner` function calls the `eq_location_clean` function and the `country_finder` function to help it clean the data. These functions are specifically written to handle descriptions of earthquake locations. 
+
+This is an example of what `country_finder` does. It classifies observations into modern countries by their latitude and longitude wherever possible. 
+
+```{r}
+eq %>% 
+  dplyr::filter(!is.na(Longitude)==TRUE, !is.na(Latitude)==TRUE) %>% 
+  country_finder(.) %>% 
+  dplyr::select(Latitude, Longitude, Country) %>% 
+  head(10)
+```
+
+A table of the countries that observations could potentially be classified as is included below:
+
+```{r, echo=FALSE}
+rnaturalearth::ne_countries()$admin %>% 
+  kable(col.names="COUNTRIES")
+```
+
+This is an example of `eq_location_clean`. It works in the Location Name column of the data and strips away all characters that come before the colon ":". It also turns the location name into title case, making it easier to read. 
+
+Location Name column before changes: 
+
+```{r}
+eq %>% 
+  tail(10) %>% 
+  dplyr::select(`Location Name`)
+```
+
+Replace with new Location Name column created with `eq_location_clean`:
+
+```{r}
+eq %>% 
+  tail(10) %>% 
+  eq_location_clean(.) %>% 
+  dplyr::select(`Location Name`)
+```
+
 After data is cleaned, it can be plotted in ggplot2 using one of the custom geoms, `geom_timeline` or `geom_timeline_label`. 
+
 The following code will plot a timeline of earthquakes between 15 BC and 29 AD, colored and filled by their latitude. 
 This code also demonstrates the use of the `bc_date` and `year_pad` functions. 
 
@@ -54,6 +114,20 @@ ggplot2::ggplot(data=clean_slice,
   geom_timeline(size=5) +
   ggplot2::ggtitle("Earthquakes from 15BC to 29AD")
 ```
+
+Note that since the default geom associated with `stat_timeline` is set to `geom_timeline`, the following code produces the same plot: 
+
+```{r}
+ggplot2::ggplot(data=clean_slice, 
+                ggplot2::aes(x=Date,
+                             xmin=bc_date(y="-015"),
+                             xmax=year_pad(y="29"),
+                             colour=Latitude,
+                             fill=Latitude)) +
+  stat_timeline(size=5) +
+  ggplot2::ggtitle("Earthquakes from 15BC to 29AD")
+```
+
 
 The following code creates another timeline in ggplot2, this time with the optional y-aesthetic specified plus the default color & fill. 
 
@@ -84,12 +158,40 @@ ggplot2::ggplot(data=clean_slice,
   ggplot2::ggtitle("120AD-155AD Earthquakes")
 ```
 
-Finally, the following code creates a Leaflet map of all the earthquakes that occurred in China at this time, colored by date. The `eq_create_label` function is used to create a column which, when supplied to annot_col, appears as a popup containing location name, magnitude, and total death information. 
+Once again, as the default geom for `stat_timeline_label` is set to `geom_timeline_label`, the following code creates the exact same plot:
+
+```{r}
+ggplot2::ggplot(data=clean_slice, 
+                ggplot2::aes(x=Date,
+                             xmin=year_pad(120),
+                             xmax=year_pad(155),
+                             txt=Country,
+                             max_by=Mag, 
+                             size=Mag,
+                             color=Latitude,
+                             fill=Latitude,
+                             n_max=3))+
+  stat_timeline_label() +
+  ggplot2::ggtitle("120AD-155AD Earthquakes")
+```
+
+Finally, the following code creates a Leaflet map of all the earthquakes that occurred in China at this time, colored by date. 
+
+The `eq_create_label` function is used to create a column which, when supplied to annot_col, appears as a popup containing location name, magnitude, and total death information. 
 
 ```{r}
 clean_slice %>% 
   dplyr::mutate(., pop_text<-eq_create_label(.)) %>% 
   dplyr::filter(., Country=="China") %>% 
   eq_map(., color=.$Date, annot_col=.$pop_text)
+```
+
+The column created by `eq_create_label` is written using HTML syntax and, before plotting, looks like this:
+
+```{r}
+clean_slice %>% 
+  dplyr::filter(., Country=="China") %>% 
+  eq_create_label(.) %>% 
+  head()
 ```
 
