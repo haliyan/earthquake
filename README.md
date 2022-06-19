@@ -24,6 +24,9 @@ Software Development in R” by JHU.
 **This package has a R-CMD-Check badge provided by GitHub Actions and
 NOT a Travis badge.**
 
+**This means it also includes a R-CMD-check.yaml file inside the .github
+foler instead of a .travis.yml file.**
+
 Since the time of the creation of this course, Travis CI has changed
 significantly. It is no longer as straightforward as outlined in the
 course materials to use Travis for open-source projects. My

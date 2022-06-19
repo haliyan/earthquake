@@ -30,6 +30,8 @@ The goal of earthquake is to clean, map, and visualize raw NOAA (National Oceani
 
 **This package has a R-CMD-Check badge provided by GitHub Actions and NOT a Travis badge.** 
 
+**This means it also includes a R-CMD-check.yaml file inside the .github foler instead of a .travis.yml file.**
+
 Since the time of the creation of this course, Travis CI has changed significantly. It is no longer as straightforward as outlined in the course materials to use Travis for open-source projects. My understanding is that using their services for open-source projects such as this one requires signing up for a plan/trial (which in turn requires disclosing credit card information to Travis, which I wish to avoid if at all possible) and applying for open source credits. 
 See Travis's statements on open source credits [here](https://docs.travis-ci.com/user/billing-faq/#what-if-i-am-building-open-source) and trial plan [here](https://docs.travis-ci.com/user/billing-overview/#free-trial-plan). 
 
