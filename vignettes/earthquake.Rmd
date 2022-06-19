@@ -19,7 +19,11 @@ library(knitr)
 suppressMessages(library(magrittr))
 ```
 
-This package contains functions which clean NOAA earthquake data, map it on an interactive Leaflet map, and plot it in ggplot2 using custom geoms. 
+The purpose of this package is to clean NOAA earthquake data, map it on an interactive Leaflet map, and plot it in ggplot2 using custom geoms. 
+This package could be used to analyze the various forms of damage caused by earthquakes (e.g. death, destruction/damage to houses, etc) and secondary effects and the damage they cause. 
+It can also be used to find locations where earthquakes tend to be high-magnitude, particularly destructive, or particularly costly to clean up after. 
+The large range of dates this package is capable of handling means it can also be useful for historians studying natural disasters and their impacts throughout history. 
+It can also be used to create visualizations or maps for presentations which may help back up claims in studies on earthquakes. 
 
 Load the package as follows: 
 
